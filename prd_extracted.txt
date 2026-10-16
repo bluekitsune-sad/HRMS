@@ -1,0 +1,1256 @@
+PRD — Creative Studio HRMS
+Product Name: ArtFlow HRMS Product Type: HRMS + Creative Workforce & Task Management Target Organization: Digital Art / Illustration / Animation / Comic Studio Frontend & Backend: Next.js Database: MongoDB Authentication: NextAuth/Auth.js or custom JWT/session authentication File Storage: S3-compatible object storage / Cloudinary Notifications: Email + in-app notifications + optional WhatsApp integration Deployment: Vercel + MongoDB Atlas
+
+1. Product Vision
+ArtFlow is an internal platform designed specifically for digital art studios.
+Traditional HR systems answer:
+"Who works here?"
+ArtFlow should answer:
+"Who works here, what are they good at, what are they currently working on, what can they pick up next, how are payments handled, and what is happening across the studio?"
+The system combines:
+HR management
+Employee self-service
+Attendance
+Leave
+Payroll/payment records
+Payment-proof management
+Recruitment
+Artist profiles
+Skills and portfolios
+Creative task management
+Artist workload
+Equipment management
+Project management
+Performance
+Studio analytics
+
+2. The Big Idea
+The application should have three primary experiences.
+                   ART FLOW
+                       │
+        ┌──────────────┼──────────────┐
+        │              │              │
+       HR           ARTISTS         MANAGEMENT
+        │              │              │
+        ▼              ▼              ▼
+   Employees       Tasks          Analytics
+   Attendance      Portfolio      Workload
+   Leave           Skills         Projects
+   Payroll         Availability   Performance
+   Documents       My Work        Finance
+
+The employee shouldn't feel like they're using an HR application.
+They should feel like they're using a studio operating system.
+
+3. User Roles
+Admin
+Full system access.
+Can:
+Manage users.
+Manage employees.
+Manage departments.
+Manage salaries.
+Manage payroll.
+Manage permissions.
+Manage system settings.
+View analytics.
+Manage tasks/projects.
+View audit logs.
+
+HR
+Can:
+Manage employees.
+Recruitment.
+Onboarding.
+Attendance.
+Leave.
+Contracts.
+Employee documents.
+Payroll preparation.
+Payment records.
+Performance reviews.
+Employee communication.
+Cannot automatically access everything financial unless permission is granted.
+
+Manager / Art Director
+Can:
+Create projects.
+Create tasks.
+Assign tasks.
+View artist availability.
+View workload.
+Approve/reject work.
+Review artists.
+Give feedback.
+View team analytics.
+
+Artist / Employee
+Can:
+View profile.
+Update permitted information.
+Clock in/out.
+Request leave.
+View attendance.
+View salary/payslips.
+Upload payment proof.
+Browse available tasks.
+Claim tasks.
+View assigned work.
+Update task status.
+Submit work.
+View feedback.
+Manage portfolio.
+
+Finance
+Can:
+View payroll.
+Verify payment proofs.
+Manage payment records.
+Generate payroll reports.
+But shouldn't have unrestricted access to employee HR information.
+
+4. Dashboard
+The dashboard changes depending on the user's role.
+HR Dashboard
+┌─────────────────────────────────────────┐
+│             HR DASHBOARD                │
+├─────────────────────────────────────────┤
+│ Employees              42               │
+│ Present Today          37               │
+│ On Leave                3               │
+│ Pending Requests        5               │
+│ New Applicants          8               │
+│ Pending Payment Proof   4               │
+└─────────────────────────────────────────┘
+
+Upcoming
+──────────────────────────────
+⚠ 3 contracts expiring
+⚠ 2 probation periods ending
+🎂 2 birthdays
+📋 5 pending leave requests
+💰 4 payment proofs awaiting verification
+
+
+5. Employee Management
+Employee profile:
+Employee
+────────────────────
+
+Profile
+Name
+Photo
+Employee ID
+Email
+Phone
+Department
+Position
+Manager
+Joining Date
+Employment Type
+Status
+
+Professional
+Skills
+Software
+Specializations
+Experience
+Portfolio
+
+HR
+Salary
+Leave Balance
+Attendance
+Performance
+
+Documents
+Contract
+ID
+NDA
+Certificates
+Other
+
+
+6. Artist Profile
+This is where we start making the product specialized for a digital art company.
+Every artist has a Creative Profile.
+┌─────────────────────────────────────┐
+│ Sarah Khan                          │
+│ Character Artist                    │
+│                                     │
+│ ⭐ 4.8 Creative Rating              │
+│ 🟢 Available                        │
+├─────────────────────────────────────┤
+│ Skills                              │
+│                                     │
+│ Character Design     █████████ 95%  │
+│ Illustration         ████████  88%  │
+│ Photoshop            █████████ 94%  │
+│ Blender              ██████    65%  │
+│                                     │
+├─────────────────────────────────────┤
+│ Current Work                         │
+│ Comic Project A                     │
+│ 60% allocated                       │
+└─────────────────────────────────────┘
+
+Artists can maintain:
+Skills
+Software
+Specializations
+Portfolio
+Art styles
+Experience
+Certifications
+Preferred work
+Availability
+
+7. Recruitment / Applicant Tracking
+HR can create jobs:
+Create Position
+
+Title:
+Comic Illustrator
+
+Required Skills:
+✓ Photoshop
+✓ Illustration
+✓ Character Design
+
+Experience:
+2+ years
+
+Portfolio Required:
+Yes
+
+Applicants move through:
+Applied
+ ↓
+Screening
+ ↓
+Portfolio Review
+ ↓
+Interview
+ ↓
+Art Test
+ ↓
+Final Interview
+ ↓
+Offer
+ ↓
+Hired
+
+
+8. Portfolio-Based Hiring
+This is specifically for your studio.
+Instead of just:
+CV.pdf
+
+HR sees:
+Candidate
+────────────────────
+
+Portfolio
+[ View Portfolio ]
+
+Specialization
+Character Art
+
+Skills
+Photoshop ★★★★★
+Illustrator ★★★★☆
+Blender ★★★☆☆
+
+Art Test
+[ View Submission ]
+
+Interview
+8.5/10
+
+Portfolio Review
+9/10
+
+This makes recruitment much more relevant to artists.
+
+9. Attendance
+Employees can:
+CLOCK IN
+   ↓
+Working
+   ↓
+CLOCK OUT
+
+Track:
+Arrival.
+Departure.
+Hours.
+Late arrival.
+Overtime.
+Absence.
+Remote work.
+Dashboard:
+Today's Attendance
+
+🟢 Present     36
+🟡 Late         3
+🔴 Absent       2
+🔵 Remote       5
+
+
+10. Leave Management
+Employee:
+Annual Leave
+12 / 20 remaining
+
+Sick Leave
+6 / 10 remaining
+
+Casual Leave
+4 / 5 remaining
+
+Request:
+Leave Type: Annual
+From: 15 Oct
+To: 17 Oct
+
+Reason:
+Personal
+
+[Submit]
+
+Workflow:
+Employee
+   ↓
+Manager
+   ↓
+HR
+   ↓
+Approved
+
+Notifications are automatically generated.
+
+11. Payroll
+HR can create monthly payroll.
+October Payroll
+
+Employee       Salary     Bonus    Deduction    Net
+----------------------------------------------------
+Ahmed          150,000     10,000     0        160,000
+Sarah          120,000      5,000     0        125,000
+Ali            100,000      0        2,000       98,000
+
+Payroll should have:
+Draft → Review → Approved → Paid
+This prevents accidental changes after payroll is finalized.
+
+12. The WhatsApp Payment Proof Feature
+This is one of the features I would definitely highlight to management.
+You mentioned that employees currently share payment screenshots on WhatsApp.
+Instead of:
+WhatsApp
+   ↓
+Screenshot
+   ↓
+HR searches chat
+   ↓
+"Whose payment was this?"
+   ↓
+Manually records it
+
+ArtFlow turns it into a structured process.
+Employee Payment Center
+Employee sees:
+💰 My Payments
+
+October Salary
+Rs. 150,000
+
+Status:
+🟢 Paid
+
+Payment Proof:
+✓ Uploaded
+
+Payment Date:
+Oct 1
+
+Employee can upload:
+Screenshot
+Bank receipt
+Payment confirmation
+Other proof
+The system stores:
+Payment
+──────────────────
+Employee: Ahmed
+Month: October
+Amount: Rs. 150,000
+
+Proof:
+payment_october.png
+
+Uploaded:
+Oct 1, 10:42 AM
+
+Status:
+Verified ✓
+
+
+13. WhatsApp Payment Organization
+If employees continue sending screenshots through WhatsApp, you can also create a Payment Inbox.
+Conceptually:
+                PAYMENT INBOX
+
+WhatsApp / Uploads
+        ↓
+┌────────────────────────────┐
+│ Payment Screenshot         │
+│ Ahmed                      │
+│ Oct Salary                 │
+│ Rs.150,000                 │
+└────────────────────────────┘
+        ↓
+      HR Review
+        ↓
+      Verified
+        ↓
+      Employee Record
+
+For the first version, I'd not attempt to automatically read private WhatsApp messages without the appropriate WhatsApp Business/API integration and organizational authorization.
+Instead, provide:
+"Upload WhatsApp Screenshot"
+and optionally later integrate an approved WhatsApp Business workflow.
+
+14. Payment Proof Verification
+HR/Finance sees:
+Payment Verification
+
+Ahmed
+─────────────────────
+Amount: Rs.150,000
+Month: October
+
+[ Screenshot ]
+
+Employee submitted:
+Oct 1
+
+Status:
+🟡 Pending Verification
+
+[Approve]
+[Reject]
+[Request New Proof]
+
+Once approved:
+Employee Payment History
+
+becomes the permanent source of truth.
+
+15. Creative Task Marketplace
+🔥 This should be one of the centerpiece features.
+Instead of managers assigning every small task manually, artists can browse available creative tasks.
+Example:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎨 AVAILABLE CREATIVE TASKS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#COMIC-1024
+
+Marvel-style Comic Page
+━━━━━━━━━━━━━━━━━━━━━━
+
+Type:
+Comic Illustration
+
+Difficulty:
+★★★★☆
+
+Estimated Time:
+6 hours
+
+Required Skills:
+• Character Art
+• Background Art
+• Photoshop
+
+Deadline:
+Friday
+
+Reward / Project Value:
+Rs. 8,000
+
+[ CLAIM TASK ]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+16. Claiming a Task
+Artist clicks:
+CLAIM TASK
+System immediately changes:
+Available
+     ↓
+Claimed by Sarah
+
+Everyone can see:
+🎨 Comic Page #1024
+
+Claimed by:
+Sarah Khan
+
+Status:
+🟡 In Progress
+
+You specifically mentioned wanting to see who claimed it.
+Yes — this should be a core feature.
+
+17. Preventing Two Artists From Claiming the Same Task
+This needs to be handled at the backend/database level.
+Two artists could click:
+CLAIM
+at almost exactly the same time.
+Your API should perform an atomic database update so only one succeeds.
+Conceptually:
+Task status = OPEN
+
+        ↓
+
+Artist A → CLAIM
+Artist B → CLAIM
+
+        ↓
+
+Database atomic operation
+
+        ↓
+
+Artist A → SUCCESS
+Artist B → TASK ALREADY CLAIMED
+
+This is a great technical detail to mention in your presentation because it demonstrates that the application isn't just a frontend demo.
+
+18. Task Lifecycle
+A task can move through:
+OPEN
+ ↓
+CLAIMED
+ ↓
+IN PROGRESS
+ ↓
+SUBMITTED
+ ↓
+UNDER REVIEW
+ ↓
+REVISION REQUESTED
+ ↓
+APPROVED
+ ↓
+COMPLETED
+
+This is much better than simply having:
+Todo
+Doing
+Done
+
+for a creative studio.
+
+19. Task Submission
+Artist finishes the artwork.
+They click:
+Submit Work
+Upload:
+final-artwork.psd
+preview.jpg
+reference.pdf
+
+Add:
+Artist Note:
+"Adjusted the lighting based on the art director's feedback."
+
+Then:
+SUBMITTED
+
+Art director reviews it.
+
+20. Revision Workflow
+Art director:
+❌ Revision Required
+
+Feedback:
+
+"Character's left hand needs another revision.
+Background lighting is too dark."
+
+Artist sees:
+Revision #2
+
+Feedback
+↓
+Artist Update
+↓
+Resubmit
+
+This creates a full history.
+
+21. Creative Task Board
+You can make the task page visually impressive:
+┌────────────┬────────────┬────────────┬────────────┐
+│ AVAILABLE  │ IN PROGRESS│  REVIEW     │ COMPLETED  │
+├────────────┼────────────┼────────────┼────────────┤
+│ Comic #102 │ Comic #98  │ Comic #94   │ Comic #88  │
+│ Character  │ Sarah      │ Ahmed       │ Ali        │
+│             │            │             │            │
+│ Cover #31  │ BG #51     │ Cover #21   │ BG #42     │
+│             │            │             │            │
+└────────────┴────────────┴────────────┴────────────┘
+
+
+22. Artist Workload
+Management should be able to see:
+ARTIST CAPACITY
+
+Sarah
+████████████████░░░░ 80%
+
+Ahmed
+██████████░░░░░░░░░░ 50%
+
+Ali
+████████████████████ 100%
+
+Sara
+██████░░░░░░░░░░░░░░ 30%
+
+This prevents managers from assigning everything to the same talented artist.
+
+23. 🚀 "Creative Match" — Your First WOW Feature
+Here's where I'd make management go:
+"Wait... it recommends which artist should take the task?"
+When a task is created:
+Comic Character Illustration
+
+Required:
+Character Art
+Photoshop
+Digital Painting
+
+The system calculates artist compatibility.
+AI / Smart Match
+
+1. Sarah        96% ⭐⭐⭐⭐⭐
+2. Ahmed        88% ⭐⭐⭐⭐
+3. Ali          72% ⭐⭐⭐
+4. Sara         64% ⭐⭐⭐
+
+The matching score could initially be rule-based, not AI.
+For example:
+Skill match       40%
+Availability      25%
+Previous work     20%
+Current workload  15%
+
+Then later you can add AI.
+This is important because you don't need to pretend that everything is AI.
+Build a good deterministic recommendation engine first.
+
+24. 🔥 "Studio Pulse" — The Second WOW Feature
+Create a beautiful management dashboard showing the health of the studio.
+Something like:
+            STUDIO PULSE
+        ──────────────────────
+
+        🟢 HEALTHY
+
+Productivity          █████████░ 89%
+Artist Capacity       ████████░░ 81%
+Deadlines             █████████░ 92%
+Team Availability     ████████░░ 78%
+Pending Reviews       ███░░░░░░░ 31%
+
+────────────────────────────────
+
+🔥 Most Active Project
+Comic Series A
+
+🎨 Most Requested Skill
+Character Illustration
+
+⚠ Bottleneck
+Art Director Review
+
+🏆 Top Contributor
+Sarah Khan
+
+📈 Productivity
++14% vs last month
+
+Now management isn't just looking at employee records.
+They're looking at the health of their creative operation.
+
+25. 🔥 "Artist DNA" — Another Creative Feature
+Give every artist a visual skill profile.
+For example:
+                ARTIST DNA
+
+              Character Art
+                   ★★★★★
+                     │
+       Illustration ─┼─ Concept Art
+          ★★★★☆      │      ★★★★★
+                     │
+    3D ──────────────┼──────────── Photoshop
+    ★★★☆☆            │             ★★★★★
+                     │
+              Animation
+                 ★★☆☆☆
+
+This becomes useful for:
+Recruitment.
+Task matching.
+Training.
+Promotions.
+Project staffing.
+And visually, it makes the application feel much more specialized.
+
+26. 🔥 "Creative Growth Map"
+This could be another management demo feature.
+The system tracks what skills employees are developing.
+Example:
+SARAH'S GROWTH
+
+2025                         2026
+
+Illustration
+███████░░░ 70%      →       ██████████ 95%
+
+Character Art
+█████░░░░░ 55%      →       █████████  90%
+
+3D
+███░░░░░░░ 30%      →       ██████░░░░ 60%
+
+Animation
+██░░░░░░░░ 20%      →       ████░░░░░░ 40%
+
+Management can see:
+"Our artists aren't just working; they're developing."
+That's a very compelling HR feature.
+
+27. Equipment Management
+For each employee:
+Assigned Equipment
+
+MacBook Pro
+Asset ID: MB-103
+
+Wacom Tablet
+Asset ID: WT-22
+
+Monitor
+Asset ID: MON-42
+
+Headphones
+Asset ID: HP-13
+
+Track:
+Assignment.
+Return.
+Condition.
+Purchase date.
+Warranty.
+Repair history.
+
+28. Software License Management
+Creative studios often have expensive licenses.
+Track:
+Adobe Creative Cloud
+Assigned: Sarah
+
+Maya
+Assigned: Ahmed
+
+Photoshop
+Assigned: 25 users
+
+Blender
+Unlimited / Open Source
+
+Dashboard:
+Licenses
+
+Active       38
+Available     4
+Expiring      2
+
+
+29. Employee Self-Service
+Employee home:
+Good morning, Sarah 👋
+
+Today's Work
+────────────────────
+🎨 Comic Page #102
+🟡 In Progress
+
+🎨 Character #52
+🔵 Review
+
+────────────────────
+
+Attendance
+09:03 AM → Working
+
+Leave Balance
+12 days
+
+Latest Payment
+October Salary ✓
+
+Tasks Available
+12
+
+This makes the application feel like a real employee portal.
+
+30. Notifications
+Central notification system:
+🔔 Notifications
+
+Sarah claimed Comic #102
+
+Ahmed submitted Character #52
+
+Your leave request was approved
+
+Your payment proof was verified
+
+Your performance review is due
+
+Comic #102 deadline is tomorrow
+
+Optional:
+Email
+WhatsApp Business
+In-app
+Push notifications
+
+31. MongoDB Data Model
+A possible collection structure:
+users
+employees
+departments
+roles
+permissions
+
+attendance
+leaveRequests
+leaveBalances
+
+payroll
+payments
+paymentProofs
+
+candidates
+jobPostings
+interviews
+
+projects
+tasks
+taskSubmissions
+taskReviews
+
+skills
+employeeSkills
+portfolios
+
+documents
+equipment
+softwareLicenses
+
+performanceReviews
+notifications
+auditLogs
+
+
+32. Example Task Document
+Conceptually:
+{
+  title: "Comic Page #102",
+  type: "comic",
+  status: "claimed",
+
+  requiredSkills: [
+    "character-art",
+    "photoshop"
+  ],
+
+  createdBy: "managerId",
+
+  claimedBy: "artistId",
+  claimedAt: Date,
+
+  deadline: Date,
+
+  estimatedHours: 6,
+
+  projectId: "projectId",
+
+  submissions: [],
+
+  reviews: []
+}
+
+The important thing is that claimedBy becomes the source of truth for the person who owns the task.
+
+33. Example Payment Proof Document
+{
+  employeeId: "employeeId",
+
+  payrollId: "payrollId",
+
+  month: "2026-10",
+
+  amount: 150000,
+
+  proofFile: {
+    url: "...",
+    type: "image"
+  },
+
+  submittedAt: Date,
+
+  status: "pending",
+
+  verifiedBy: null,
+
+  verifiedAt: null
+}
+
+
+34. API Structure
+Since you're using Next.js, you can keep the application relatively unified.
+For example:
+/api
+│
+├── /auth
+├── /employees
+├── /attendance
+├── /leave
+├── /payroll
+├── /payments
+├── /payment-proofs
+├── /recruitment
+├── /projects
+├── /tasks
+├── /task-submissions
+├── /artists
+├── /skills
+├── /portfolio
+├── /equipment
+├── /licenses
+├── /performance
+├── /notifications
+└── /analytics
+
+You can implement these using Next.js Route Handlers.
+
+35. Recommended Tech Stack
+Frontend
+Next.js
+App Router
+TypeScript
+Server Components where appropriate
+Client Components for interactive UI
+UI
+I'd use:
+Tailwind CSS
+shadcn/ui
+Lucide icons
+Recharts for analytics
+For the creative sections, add:
+Framer Motion
+for subtle animations.
+
+36. Backend
+You don't necessarily need a separate Express/Nest backend.
+Use:
+Next.js
+├── Server Components
+├── Server Actions
+├── Route Handlers
+├── Authentication
+└── API
+
+This keeps the architecture relatively simple.
+
+37. Database
+MongoDB Atlas
+Use collections around business domains rather than one giant employee document.
+For example:
+Employee
+    ↓
+Attendance
+Leave
+Payroll
+Tasks
+Performance
+Documents
+Equipment
+
+Use MongoDB indexes heavily for:
+employeeId
+email
+task status
+claimedBy
+projectId
+payroll month
+payment status
+createdAt
+
+38. File Storage
+Don't store large artwork files directly inside MongoDB.
+Use:
+MongoDB
+   ↓
+metadata
+
+Object Storage
+   ↓
+actual files
+
+For example:
+MongoDB
+
+submission:
+{
+   fileUrl: "...",
+   artistId: "...",
+   taskId: "..."
+}
+
+while the actual PSD/PNG/video lives in object storage.
+
+39. Security Requirements
+Because this is an HR application, security needs to be taken seriously.
+Implement:
+Role-based access control.
+Server-side authorization.
+Password hashing if using password auth.
+Secure sessions.
+Input validation.
+File type validation.
+File size limits.
+Audit logs.
+Rate limiting.
+Secure document access.
+Encryption in transit.
+No salary data exposed to unauthorized users.
+Especially:
+Never rely on hiding UI buttons as authorization.
+If an employee shouldn't see payroll data, the API/server must reject the request too.
+
+40. Audit Log
+Every important HR action should be recorded.
+Audit Log
+
+HR Manager
+Changed:
+Ahmed's salary
+
+Old:
+150,000
+
+New:
+165,000
+
+Time:
+Oct 9, 10:32 AM
+
+Also:
+Sarah claimed Task #102
+Ahmed approved payment proof
+HR rejected leave request
+Admin changed employee role
+Manager approved artwork
+
+This is extremely useful in a real organization.
+
+41. MVP
+Don't try to build everything simultaneously.
+I'd make your first version:
+Sprint 1 — Foundation
+Authentication
+Roles
+Employee management
+Departments
+Dashboard
+MongoDB architecture
+Sprint 2 — HR
+Attendance
+Leave
+Employee documents
+Employee self-service
+Sprint 3 — Finance
+Payroll
+Payment records
+Payment proof upload
+Verification workflow
+Sprint 4 — Creative Operations
+Projects
+Tasks
+Task marketplace
+Claim task
+Task status
+Submission
+Review/revision
+Sprint 5 — Artist Intelligence
+Skills
+Artist profiles
+Artist availability
+Workload
+Creative Match
+Sprint 6 — WOW
+Studio Pulse
+Artist DNA
+Growth Map
+Advanced analytics
+Beautiful animations/interactions
+
+42. The "Management Demo" Flow
+This is how I'd actually demonstrate it.
+Don't start by showing:
+"Here's the employee CRUD."
+😴
+Instead:
+Scene 1
+Create:
+Comic Issue #12
+Then create:
+Comic Page #37 — Character Illustration
+Required skills:
+Character Art
+Photoshop
+Digital Painting
+
+Scene 2
+Open the Creative Match panel.
+It says:
+Best Matches
+
+Sarah      96% ⭐
+Ahmed      88%
+Ali        74%
+
+
+Scene 3
+Log in as Sarah.
+She sees:
+🔥 Recommended for You
+
+Comic Page #37
+96% Match
+
+[ CLAIM TASK ]
+
+She clicks it.
+
+Scene 4
+Switch to the manager dashboard.
+Immediately:
+Comic Page #37
+
+CLAIMED BY
+Sarah Khan
+
+🟡 In Progress
+
+Management sees the task ownership update.
+
+Scene 5
+Sarah uploads her artwork.
+Manager gets:
+Sarah submitted Comic Page #37 for review.
+Manager requests revision.
+Sarah gets:
+Revision requested — 2 comments.
+She resubmits.
+Manager approves.
+✅ COMPLETED
+
+
+Scene 6 — Payment
+HR opens payroll.
+Sarah
+October Salary
+Rs. 120,000
+
+Sarah uploads the payment screenshot she previously would have sent through WhatsApp.
+It appears in:
+Payment Inbox
+
+HR verifies it.
+Now:
+October Salary
+✓ Paid
+✓ Proof Verified
+
+
+Scene 7 — The killer screen
+Open:
+Studio Pulse
+And show:
+            STUDIO PULSE
+
+       ┌───────────────────────┐
+       │       🟢 HEALTHY      │
+       └───────────────────────┘
+
+Creative Capacity       84%
+Tasks Completed         92%
+Deadline Health         88%
+Artist Utilization      79%
+
+────────────────────────────────
+
+🔥 TOP PROJECT
+Comic Series #12
+
+🎨 MOST REQUESTED SKILL
+Character Illustration
+
+⚠ BOTTLENECK
+Art Director Reviews
+
+🏆 TOP CONTRIBUTOR
+Sarah Khan
+
+📈 COMPLETION RATE
++18% this month
+
+Then click Artist DNA.
+And show management the skill map.
+That is the point where the project stops looking like:
+"I made an HR dashboard."
+and starts looking like:
+"I built an operating system for our creative studio."
+
+43. Final Product Positioning
+I'd actually avoid calling it simply "HRMS" when presenting it.
+Call it:
+ArtFlow — Creative Studio Operating System
+Tagline
+People. Projects. Artists. Payments. One Studio.
+The HRMS is the foundation, but the differentiator is the creative workforce layer.
+Your three strongest selling points would be:
+Creative Task Marketplace
+Artists can discover and claim work while management sees ownership and progress in real time.
+Artist Intelligence
+Skills, portfolios, availability, workload and smart task matching help management put the right artist on the right project.
+Studio Pulse
+A management-level view of workforce health, project progress, capacity, bottlenecks and creative performance.
+And the WhatsApp payment-proof system solves a very real operational problem: instead of payment screenshots disappearing inside chat conversations, they're attached to the employee/payment record and can be verified and audited.
+If you build those pieces exceptionally well, you have something much more impressive than a generic employee CRUD application.
+
+
